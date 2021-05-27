@@ -11,9 +11,21 @@ const redirect = async (req, res) =>{
         let doc = await Link.findOne({ title }) // o find me retorna todos os objetos dentro do array, eo o findOne me retorna somente um, mais com o que condiz com o que foi passado no casso o (title).
         console.log(doc);
         res.redirect(doc.url);
-    } catch (err) {
-        res.send("Houve um erro");
+    } catch (error) {
+        res.send(error);
     }
 };
 
-module.exports = {redirect}
+
+const addLink = async (req, res) =>{
+    let link = new Link( req.body);
+
+    try{
+        let doc = await link.save();
+        res.send(doc);
+    }catch(error){
+        res.send(error);
+    }
+}
+
+module.exports = {redirect, addLink}
