@@ -42,6 +42,16 @@ const mongoose = require('mongoose');
 // Criando um documento
 
 
+// mongoose.connect("mongodb://localhost/links", { useNewUrlParser: true, useUnifiedTopology: true})
+
+// let db = mongoose.connection;
+
+// // console.log(db);
+
+// db.on("error", () => { console.log("houve um erro") });
+// db.once("open", () => { console.log("Banco carregado") });
+
+
 // documento criando usando uma forma de links
 
 // o Schema é o jeito que vai conter o nosso documento.
@@ -72,7 +82,8 @@ const mongoose = require('mongoose');
 // });
 
 
-// documento criado usando forma de pessoas
+// documento criado usando form de uma pessoas
+
 
 // const personSchema = new mongoose.Schema({
 //     name: String,
@@ -94,13 +105,41 @@ const mongoose = require('mongoose');
 
 
 
+// Buscando por um documento
+
+
 mongoose.connect("mongodb://localhost/newlinks", { useNewUrlParser: true, useUnifiedTopology: true })
+
+const linkSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    description: String,
+    url: { type: String, required: true },
+    click: { type: Number, default: 0 },
+});
+
+const Link = mongoose.model('Link', linkSchema)
+
 
 let db = mongoose.connection;
 
 
 db.on("error", () => { console.log("houve um erro") });
-db.once("open", () => { console.log("Banco carregado") });
+db.once("open", () => {
+    console.log("Banco carregado")
+
+    app.get('/:title', async (req, res) => {
+
+        let title = req.params.title;
+
+        try {
+            let doc = await Link.findOne({ title }) // o find me retorna todos os objetos dentro do array, eo o findOne me retorna somente um, mais com o que condiz com o que foi passado no casso o (title).
+            console.log(doc);
+            res.redirect(doc.url);
+        } catch (err) {
+            res.send(err);
+        }
+    })
+});
 
 
 
