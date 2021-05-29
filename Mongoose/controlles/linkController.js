@@ -28,4 +28,15 @@ const addLink = async (req, res) => {
     }
 }
 
-module.exports = { redirect, addLink }
+const allLinks = async(req, res) => {
+
+    try {
+        let links = await Link.find({});
+        res.send(links);
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+
+module.exports = { redirect, addLink, allLinks }

@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const linkController = require('../controlles/linkController')
+const linkController = require('../controlles/linkController');
+
+
+router.get('/all', linkController.allLinks); // essa rota retona todos os links que tiverem salvo no banco
 
 router.get('/:title', linkController.redirect); // se houver um erro ele executa essa parte
 
