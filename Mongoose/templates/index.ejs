@@ -9,11 +9,15 @@
 <body>
 
     <form action="/" method="POST">
-        <input type="text" name="title" placeholder="Título" class="title" required>
-        <input type="text" name="description" placeholder="Descrição" class="description">
-        <input type="text" name="url" placeholder="URL" class="url" required>
+        <input type="text" name="title" placeholder="Título" class="title" value="<%=body.title%>" required>
+        <input type="text" name="description" placeholder="Descrição" class="description" value="<%=body.description%>">
+        <input type="text" name="url" placeholder="URL" class="url" value="<%=body.url%>" required>
         <button>Enviar</button>
     </form>
+
+    <% if(error){%>
+        <h3><%=error.message%></h3> 
+    <%}%>
 
 </body>
 </html>

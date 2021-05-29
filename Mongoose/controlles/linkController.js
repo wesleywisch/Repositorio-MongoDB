@@ -3,7 +3,7 @@ const Link = require("../models/Link");
 // aqui aonde vai ter todas as funções
 
 
-const redirect = async (req, res) =>{
+const redirect = async (req, res) => {
 
     let title = req.params.title;
 
@@ -17,15 +17,15 @@ const redirect = async (req, res) =>{
 };
 
 
-const addLink = async (req, res) =>{
-    let link = new Link( req.body);
+const addLink = async (req, res) => {
+    let link = new Link(req.body);
 
-    try{
+    try {
         let doc = await link.save();
         res.send("Link adicionado com sucesso!");
-    }catch(error){
-        res.send(error);
+    } catch (error) {
+        res.render('index', { error, body: req.body });
     }
 }
 
-module.exports = {redirect, addLink}
+module.exports = { redirect, addLink }
