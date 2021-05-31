@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EJS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Edição</title>
 </head>
 <body>
 
-    <h1>Editar Link</h1>
+    <div class="container w-50">
 
-    <form action="/edit/<%=body.id%>" method="POST">
-        <input type="text" name="title" placeholder="Título" class="title" value="<%=body.title%>" required>
-        <input type="text" name="description" placeholder="Descrição" class="description" value="<%=body.description%>">
-        <input type="text" name="url" placeholder="URL" class="url" value="<%=body.url%>" required>
-        <button>Salvar</button>
+    <h1 class="text-center">Editar Link</h1>
+
+    <form class="d-flex flex-column" action="/edit/<%=body.id%>" method="POST">
+        <input class="mb-2" type="text" name="title" placeholder="Título" value="<%=body.title%>" required>
+        <input class="mb-2" type="text" name="description" placeholder="Descrição" value="<%=body.description%>">
+        <input class="mb-3" type="text" name="url" placeholder="URL" value="<%=body.url%>" required>
+        <button class="btn btn-info">Salvar</button>
     </form>
 
-    <% if(error){%>
-        <h3><%=error.message%></h3> 
-    <%}%>
+    <!-- Mensagem de erro -->
+
+    <% if (error){%>
+
+        <div class="alert alert-warning mt-3">
+            <strong>Error: </strong>
+            <%=error.message%>
+        </div>
+
+        <%}%>
+
+    </div>
 
 </body>
 </html>

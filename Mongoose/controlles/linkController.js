@@ -8,7 +8,7 @@ const redirect = async (req, res, next) => {
     let title = req.params.title;
 
     try {
-        let doc = await Link.findOne({ title }) // o find me retorna todos os objetos dentro do array, eo o findOne me retorna somente um, mais com o que condiz com o que foi passado no casso o (title).
+        let doc = await Link.findOneAndUpdate({ title }, { $inc: { click: 1 } }) // o find me retorna todos os objetos dentro do array, eo o findOne me retorna somente um, mais com o que condiz com o que foi passado no casso o (title).
         console.log(doc);
         if (doc) {
             res.redirect(doc.url);
@@ -28,7 +28,7 @@ const addLink = async (req, res) => {
         let doc = await link.save();
         res.redirect('/');
     } catch (error) {
-        res.render('index', { error, body: req.body });
+        res.render('add', { error, body: req.body });
     }
 }
 
