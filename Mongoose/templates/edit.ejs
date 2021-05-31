@@ -8,13 +8,13 @@
 </head>
 <body>
 
-    <h1>Adiconar Link</h1>
+    <h1>Editar Link</h1>
 
-    <form action="/" method="POST">
+    <form action="/edit/<%=body.id%>" method="POST">
         <input type="text" name="title" placeholder="Título" class="title" value="<%=body.title%>" required>
         <input type="text" name="description" placeholder="Descrição" class="description" value="<%=body.description%>">
         <input type="text" name="url" placeholder="URL" class="url" value="<%=body.url%>" required>
-        <button>Adicionar</button>
+        <button>Salvar</button>
     </form>
 
     <% if(error){%>

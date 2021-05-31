@@ -18,17 +18,18 @@
 
         <div id="<%=links[i]._id%>">
             <form action="/?_method=DELETE" method="POST">
-            <h2>
-                <%=links[i].title%>
-            </h2>
-            <div>
-                <%=links[i].description%>
-            </div>
-            <div>
-                <%=links[i].url%>
-            </div>
-            <input name="id" value='<%=links[i]._id%>' hidden>
-            <button type="submit">Delete</button>
+                <h2>
+                    <%=links[i].title%>
+                </h2>
+                <div>
+                    <%=links[i].description%>
+                </div>
+                <div>
+                    <%=links[i].url%>
+                </div>
+                <input name="id" value='<%=links[i]._id%>' hidden>
+                <button type="submit">Delete</button>
+                <a href="/edit/<%=links[i]._id%>">Editar</a>
             </form>
         </div>
 
