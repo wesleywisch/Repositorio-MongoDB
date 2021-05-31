@@ -10,10 +10,14 @@
 
 <body>
 
+    <h1>Links</h1>
+    <a href="/add">Adicionar link</a>
+
 
     <% for(let i=0; i < links.length; i++){%>
 
         <div id="<%=links[i]._id%>">
+            <form action="/?_method=DELETE" method="POST">
             <h2>
                 <%=links[i].title%>
             </h2>
@@ -23,14 +27,15 @@
             <div>
                 <%=links[i].url%>
             </div>
-            <button onclick="deleteLink('<%=links[i]._id%>')">Delete</button>
-
+            <input name="id" value='<%=links[i]._id%>' hidden>
+            <button type="submit">Delete</button>
+            </form>
         </div>
 
         <%}%>
 
 
-            <script>
+            <!-- <script>
 
                 function deleteLink(id) {
                     fetch('/' + id + "o", { method: 'DELETE' }).then(res => {
@@ -49,7 +54,7 @@
                     })
                 };
 
-            </script>
+            </script> -->
 
 
 
