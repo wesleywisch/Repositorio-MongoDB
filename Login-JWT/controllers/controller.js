@@ -1,12 +1,18 @@
 const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
 
 const controller = {
     register: async function (req, res) {
+
+        const selectedUser = await User.findOne({email: req.body.email});
+
+        if(selectedUser){ return res.status(400).send("Email já existente") }
+
         const user = new User({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: bcrypt.hashSync(req.body.password)
         })
 
         try {
