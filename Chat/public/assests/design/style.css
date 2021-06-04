@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#msgs{
+    background-color: lightslategray;
+    width: 600px;
+    height: 600px;
+    border-radius: 0 0 .8rem .8rem;
+}
