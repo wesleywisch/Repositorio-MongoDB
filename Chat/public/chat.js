@@ -1,5 +1,6 @@
+const room = window.location.pathname.replace(/\//g, '');
 
-const socket = io('http://localhost:3000');
+const socket = io(`http://localhost:3000/${room}`);
 
 let user = null;
 
