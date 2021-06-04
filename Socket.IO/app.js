@@ -18,10 +18,6 @@ io.on('connection', (socket)=>{
 
     console.log("Nova conecção");
 
-    socket.emit('hello', {msg: "Seja bem vindo!"});
-
-    socket.on('hello_client_response', (data) =>{
-        console.log(data.msg);
-    })
+    socket.broadcast.emit('hello', {msg: `Cheugou algum novo usuário`});
 
 })
