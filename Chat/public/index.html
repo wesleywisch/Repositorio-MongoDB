@@ -13,21 +13,29 @@
 
     <div class="container">
 
-        <form action="" name="user_form_name" id="user_form">
-            <input name="user" id="user" type="text">
-            <button type="submit">Definir</button>
-        </form>
+        <div id="salas">
+            <a href="/sala1">Sala-1</a>
+            <a href="/sala2">Sala-2</a>
+        </div>
 
-        <div id="msgs">
+        <div class="meio">
 
+            <div id="msgs">
+
+            </div>
+
+            <form action="" name="form_msg_name" id="form_msg">
+                <input name="msg" id="enviar_msg" type="text" placeholder="Mande a sua mensagem...">
+                <button type="submit" id="button_enviar">Enviar</button>
+            </form>
+
+            <form action="" name="user_form_name" id="user_form">
+                <input name="user" id="user" type="text" placeholder="Por favor insira o seu nome de usuário.">
+                <button type="submit">Definir</button>
+            </form>
 
 
         </div>
-
-        <form action="" name="form_msg_name" id="form_msg">
-            <input name="msg" id="enviar_msg" type="text">
-            <button type="submit" id="button_enviar">Enviar</button>
-        </form>
 
     </div>
 
